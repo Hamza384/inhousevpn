@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Premium VPN</string>
+    <string name="vpn_process_name" translatable="false">:my.custom.vpn.process.name</string>
+    <string name="vpn_provider_authorities" translatable="false">com.anchorfree.hydrasdk.app.demo</string>
+    <string name="version">Version 1.0</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="tell_to_friend_text"> I have Found Very fast VPN Download Now</string>
+    <string name="connected"> Connected</string>
+    <string name="disconnected"> Not connected</string>
+    <string name="carrier_id_title">Carrier ID: </string>
+    <string name="connecting"> Connecting</string>
+    <string name="paused"> Paused</string>
+    <string name="no">no</string>
+    <string name="yes">yes</string>
+    <string name="are_you_sure_you_want_to_exit">Are you sure you want to exit?</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Premium VPN</string>
+    <string name="action_settings">Settings</string>
+    <bool name="ads_switch">true</bool>
+    <string name="admob_appid">ca-app-pub-9259101471660565~2719454180</string>
+    <string name="admob_banner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_native">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="admob_intersitail">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="banner_ads_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="facebook_placement_id">125586658_568258654</string>
+    <string name="privacy_policy_link">https://support.indratech.in/pages/1/privacy-policy-toto-vpn</string>
+    <bool name="admob_list_ads">true</bool>
+    <string name="kBps">kB/s</string>
+    <string name="MBps">MB/s</string>
+    <string name="kbps">kb/s</string>
+    <string name="Mbps">Mb/s</string>
+    <string name="plus99">99+</string>
+    <string name="dash">-</string>
+    <bool name="facebook_list_ads">false</bool>
+    <string name="vip_price_month"> $3.29</string>
+    <string name="vip_price_3month"> $4.39</string>
+    <string name="vip_price_6month"> $6.59</string>
+    <string name="vip_price_12month"> $9.49</string>
+    <string name="speed_booster">Speed Booster</string>
+    <string name="interstitial_ad_unit" translatable="false">ca-app-pub-6098768079659830/2690364172</string>
+    <string name="banner_ad_unit" translatable="false"> ca-app-pub-6098768079659830/4021603626</string>
+    <string name="battery_saver">Battery Saver</string>
+    <string name="extended_battery_life"> \n to 2h 10m </string>
+    <string name="optimize">optimize</string>
+    <string name="connected_server"> Connected </string>
+    <string name="select_country">Select Country</string>
+    <string name="download">Download</string>
+    <string name="get_premium">GET PREMIUM</string>
+    <string name="go_fast_servers_amp_no_ads"><![CDATA[* Go Fast Servers & No Ads]]></string>
+    <string name="_0_0_mbit">0.0 kB/s</string>
+    <string name="do_you_want_to_disconnect">Do you want to disconnect?</string>
+    <string name="cancel">Cancel</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="default_region_country">DEFAULT REGION</string>
+    <string name="_218ms">218ms</string>
+    <string name="time_00_00_00">00:00:00</string>
+    <string name="header_image">header_image</string>
+    <string name="upload">Upload</string>
+    <string name="not_connected">Not Connected</string>
+    <string name="go_premium">Go Premium</string>
+    <string name="selected">Selected</string>
+    <string name="status">Status : </string>
+    <string name="xtreme_vpn">Xtreme VPN</string>
+    <string name="monthly">Monthly</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="_6_month">6 Month</string>
+    <string name="_12_month">12 Month</string>
+</resources>

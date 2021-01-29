@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.free.vpn">
+
+
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name="com.free.vpn.unblock.proxy.usavpn.App"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.UnlockAllActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_appid" />
+
+        <activity
+            android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.WelcomeActivity"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.SplashActivity"
+            android:theme="@style/Splashscreentheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.ServersActivity"
+            android:parentActivityName="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.MainActivity" />
+        <activity android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.MainActivity" />
+    </application>
+
+</manifest>

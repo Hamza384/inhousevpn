@@ -1,0 +1,158 @@
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.12.8'
+    }
+}
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
+repositories {
+    maven { url 'https://maven.google.com' }
+}
+
+apply plugin: 'com.android.application'
+
+ext {
+    androidSupportLibraryVersion = "28.0.0"
+}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId 'com.free.vpn'
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 12
+        versionName "1.5"
+
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "BASE_HOST", "\"https://backend.northghost.com\""
+        buildConfigField "String", "BASE_CARRIER_ID", "\"afdemo\""
+        buildConfigField "String", "BASE_OAUTH_METHOD", "\"anonymous\""
+
+        buildConfigField "String", "SHARED_PREFS", "\"NORTHGHOST_SHAREDPREFS\""
+        buildConfigField "String", "STORED_HOST_URL_KEY", "\"com.northghost.afvclient.STORED_HOST_KEY\""
+        buildConfigField "String", "STORED_CARRIER_ID_KEY", "\"com.northghost.afvclient.CARRIER_ID_KEY\""
+
+        //place your one signal app ID
+        manifestPlaceholders = [
+                onesignal_app_id               : 'Your_OneSignal_App_ID_Here',
+                // Project number pulled from dashboard, local value is ignored.
+                onesignal_google_project_number: 'REMOTE'
+        ]
+        //place your one signal app ID END
+    }
+    signingConfigs {
+        release {
+        }
+
+    }
+    buildTypes {
+        release {
+
+            lintOptions {
+                disable 'MissingTranslation'
+                checkReleaseBuilds false
+                abortOnError false
+            }
+
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            pseudoLocalesEnabled false
+            zipAlignEnabled true
+            shrinkResources false
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.github.AnchorFreePartner.hydra-sdk-android:sdk:3.3.1'
+    implementation 'com.github.AnchorFreePartner.hydra-sdk-android:openvpn:3.3.1'
+
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    //new
+    implementation 'com.google.android.gms:play-services-basement:17.5.0'
+
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.github.bmarrdev:android-DecoView-charting:v1.2'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'io.github.dreierf:material-intro-screen:0.0.6'
+    implementation 'com.github.GrenderG:Toasty:1.2.5'
+    implementation 'com.github.Shashank02051997:FancyGifDialog-Android:1.2'
+    implementation 'fr.bmartel:jspeedtest:1.32.1'
+    implementation 'com.github.anastr:speedviewlib:1.3.0'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.github.Shashank02051997:FancyAlertDialog-Android:0.1'
+    implementation 'com.cardiomood.android:android-widgets:0.1.1'
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
+    implementation 'com.zys:brokenview:1.0.3'
+    implementation 'devlight.io:navigationtabbar:1.2.5'
+    implementation 'me.itangqi.waveloadingview:library:0.3.5'
+    implementation 'net.grandcentrix.tray:tray:0.12.0'
+    implementation 'jp.wasabeef:recyclerview-animators:2.2.5'
+
+
+    'net.cachapa.expandablelayout:expandablelayout:[2.9.2]'
+
+
+    implementation 'com.yarolegovich:lovely-dialog:1.1.0'
+
+    implementation 'com.github.javiersantos:MaterialStyledDialogs:2.1'
+
+    implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    implementation 'com.pixplicity.easyprefs:library:1.9.0'
+
+
+    implementation "com.airbnb.android:lottie:3.5.0"
+
+    implementation 'com.google.android.gms:play-services-ads:19.6.0'
+    implementation 'com.facebook.android:audience-network-sdk:5.11.0'
+
+    implementation 'com.onesignal:OneSignal:3.15.6'
+
+    implementation 'com.github.daoibrahim:AdmobAdvancedNativeRecyclerview:1.0.0'
+    implementation 'com.anjlab.android.iab.v3:library:1.0.44'
+    implementation 'com.pixplicity.easyprefs:library:1.9.0'
+
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+    implementation 'com.github.markushi:circlebutton:1.1'
+    implementation 'com.github.oatrice:internet-speed-testing:1.0.1'
+    implementation 'com.gauravbhola.ripplepulsebackground:library:1.0.0'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    //in app review
+    implementation 'com.google.android.play:core:1.9.0'
+
+}
