@@ -6,7 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
-import com.free.vpn.R;
+
+import com.free.vpn.unblock.proxy.usavpn.R;
 
 import io.github.dreierf.materialintroscreen.MaterialIntroActivity;
 import io.github.dreierf.materialintroscreen.SlideFragmentBuilder;
@@ -26,24 +27,24 @@ public class WelcomeActivity extends MaterialIntroActivity {
             addSlide(new SlideFragmentBuilder()
                     .backgroundColor(R.color.colorPrimaryDark)
                     .buttonsColor(R.color.blue)
-                    .image(R.drawable.intro_one)
-                    .title("Secure VPN Servers Activity")
-                    .description("Premium VPN App is Very Fast & Secure. And Easy to Use")
+                    .image(R.drawable.ic_secure)
+                    .title("Safe and Secure")
+                    .description("QuickVPN is Very Fast & Secure.Easy to Use")
                     .build());
             addSlide(new SlideFragmentBuilder()
                     .backgroundColor(R.color.colorPrimaryDark)
                     .buttonsColor(R.color.blue)
-                    .image(R.drawable.intro_two)
-                    .title("Use Premium ")
-                    .description("Buy Premium Servers Activity and get more Secure ServersActivity ")
+                    .image(R.drawable.iv_security_secure)
+                    .title("Premium Features")
+                    .description("Get Premium Servers and enjoy your Security")
                     .build());
 
             addSlide(new SlideFragmentBuilder()
                     .backgroundColor(R.color.colorPrimaryDark)
                     .buttonsColor(R.color.blue)
-                    .image(R.drawable.intro_two)
-                    .title("Use Premium ")
-                    .description("Buy Premium Servers Activity and get more Secure ServersActivity ")
+                    .image(R.drawable.iv_privacy_secure)
+                    .title("Private Surfing")
+                    .description("With QuickVPN you can Anonymously Surf")
                     .build());
 
         }

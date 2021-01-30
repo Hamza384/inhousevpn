@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/_15sdp"
-    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_5sdp"
     android:layout_marginEnd="@dimen/_15sdp"
-    android:layout_marginBottom="@dimen/_10sdp">
+    android:layout_marginBottom="@dimen/_5sdp">
 
 
     <androidx.cardview.widget.CardView
@@ -31,14 +31,13 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:src="@drawable/flag_default" />
+                android:src="@drawable/ic_flagss" />
 
             <TextView
                 android:id="@+id/region_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/country_flag"
                 android:text="@string/default_region_country"
                 android:textColor="@color/primary"
@@ -52,7 +51,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
-                android:text="436ms"
+                android:text="334ms"
                 android:textSize="@dimen/_16ssp"
                 android:visibility="gone" />
 
@@ -83,7 +82,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/flag_default" />
+                app:srcCompat="@drawable/ic_flagss" />
 
             <TextView
                 android:id="@+id/region_title1"

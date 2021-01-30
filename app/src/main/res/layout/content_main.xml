@@ -9,8 +9,7 @@
     android:background="#FFFFFF"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:scrollbars="none"
-    tools:context=".unblock.proxy.usavpn.MyVpnActivities.MainActivity">
+    android:scrollbars="none">
 
     <RelativeLayout
         android:id="@+id/mainLayout"
@@ -97,7 +96,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/_180sdp">
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/animation_view"
@@ -112,8 +111,8 @@
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_centerInParent="true"
                     android:layout_centerVertical="true"
                     android:gravity="center">
@@ -123,16 +122,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:rb_duration="2000"
-                        app:rb_radius="32dp"
+                        app:rb_radius="22dp"
                         app:rb_rippleAmount="4"
                         app:rb_scale="5">
 
                         <ImageView
                             android:id="@+id/connect_btn"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="@dimen/_100sdp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_switch" />
+                            android:src="@drawable/ic_connects" />
                     </com.skyfishjy.library.RippleBackground>
                 </LinearLayout>
 
@@ -144,7 +143,7 @@
 
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="20dp"
-                    android:src="@drawable/flag_default"
+                    android:src="@drawable/ic_flagss"
                     android:visibility="gone" />
 
 
@@ -155,7 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp"
                 android:drawablePadding="10dp"
                 android:gravity="bottom"
                 android:orientation="horizontal">
@@ -168,7 +167,7 @@
                     android:drawablePadding="10dp"
                     android:gravity="bottom"
                     android:text="@string/status"
-                    android:textColor="@color/gnt_black"
+                    android:textColor="@color/blue"
                     android:textSize="@dimen/_16ssp"
                     android:textStyle="bold"
                     tools:ignore="UseCompatTextViewDrawableXml" />
@@ -225,11 +224,11 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_80sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 app:cardBackgroundColor="@color/blue"
                 app:cardCornerRadius="15dp"
-                app:cardElevation="10dp"
+                app:cardElevation="5dp"
                 app:cardUseCompatPadding="true">
 
 
@@ -248,57 +247,34 @@
                         android:orientation="horizontal">
 
 
-                        <LinearLayout
+                        <ImageView
+                            android:id="@+id/flag_image"
+                            android:layout_width="@dimen/_35sdp"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:src="@drawable/ic_world"
+                            app:tint="@color/white" />
+
+
+                        <TextView
+                            android:id="@+id/flag_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginEnd="40dp">
+                            android:layout_margin="5dp"
+                            android:text="@string/select_country"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_18ssp"
+                            android:textStyle="bold" />
 
-                            <ImageView
-                                android:id="@+id/flag_image"
-                                android:layout_width="@dimen/_40sdp"
-                                android:layout_height="@dimen/_40sdp"
-                                android:layout_margin="@dimen/_5sdp"
-                                android:src="@drawable/ic_world"
-                                app:tint="@color/white" />
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="30dp">
-
-                            <TextView
-                                android:id="@+id/flag_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_margin="5dp"
-                                android:text="@string/select_country"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_18ssp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="15dp">
-
-                            <ImageView
-                                android:id="@+id/vpn_details"
-                                android:layout_width="45dp"
-                                android:layout_height="35dp"
-                                android:layout_gravity="center"
-                                android:layout_margin="5dp"
-                                android:layout_marginEnd="4dp"
-                                android:src="@drawable/ic_dropdown"
-                                app:tint="@color/white" />
-
-                        </LinearLayout>
+                        <ImageView
+                            android:id="@+id/vpn_details"
+                            android:layout_width="45dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:layout_marginEnd="4dp"
+                            android:src="@drawable/ic_dropdown"
+                            app:tint="@color/white" />
 
                     </LinearLayout>
 
@@ -498,13 +474,12 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:layout_below="@+id/ll_main"
             android:id="@+id/fl_adplaceholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_main"
             android:layout_margin="@dimen/_5sdp"
-            android:visibility="visible" />
-
+            android:visibility="gone" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -516,7 +491,6 @@
 
 
     </RelativeLayout>
-
 
 
 </ScrollView>

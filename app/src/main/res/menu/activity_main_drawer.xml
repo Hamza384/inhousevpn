@@ -6,45 +6,24 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_upgrade"
-            android:icon="@drawable/ic_share"
-            android:title="Select Country"
-            android:visible="false" />
-
-        <item
-            android:id="@+id/nav_unlock"
-            android:icon="@drawable/ic_crown"
-            android:title="Purchases"
-            android:visible="false" />
-
-        <item
-            android:id="@+id/nav_helpus"
-            android:icon="@drawable/ic_paper_plane"
-            android:title="Send Bug Report" />
-        <item
             android:id="@+id/nav_rate"
-            android:icon="@drawable/ic_love"
+            android:icon="@drawable/ic_rateus"
             android:title="Rate us" />
 
         <item
             android:id="@+id/nav_share"
-            android:icon="@drawable/ic_share"
+            android:icon="@drawable/ic_shares"
             android:title="Share App" />
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/ic_share"
-            android:title="Settings"
-            android:visible="false" />
-        <item
-            android:id="@+id/nav_faq"
-            android:icon="@drawable/ic_crown"
-            android:title="FAQ"
-            android:visible="false" />
 
         <item
             android:id="@+id/nav_policy"
-            android:icon="@drawable/ic_privacy"
+            android:icon="@drawable/ic_privacy_policy"
             android:title="Privacy Policy" />
+
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_about_us"
+            android:title="About Us" />
 
     </group>
 

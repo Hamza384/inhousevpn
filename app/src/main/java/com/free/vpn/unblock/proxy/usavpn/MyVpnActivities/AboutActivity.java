@@ -5,7 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.free.vpn.R;
+import com.free.vpn.unblock.proxy.usavpn.R;
+
 
 public class AboutActivity extends AppCompatActivity {
 

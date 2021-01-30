@@ -2,9 +2,12 @@ package com.free.vpn.unblock.proxy.usavpn.speed;
 
 import android.content.Context;
 
-import com.free.vpn.R;
+
+import com.free.vpn.unblock.proxy.usavpn.R;
 
 import java.util.Locale;
+
+
 
 public class Speed {
     public long mTotalSpeed = 0;

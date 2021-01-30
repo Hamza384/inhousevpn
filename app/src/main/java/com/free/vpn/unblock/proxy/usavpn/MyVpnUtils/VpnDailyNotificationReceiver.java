@@ -15,7 +15,8 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.Constants;
-import com.free.vpn.R;
+import com.free.vpn.unblock.proxy.usavpn.R;
+
 
 import static com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.Constants.CHANNEL_DESCRIPTION;
 import static com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.Constants.CHANNEL_ID;

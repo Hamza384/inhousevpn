@@ -26,24 +26,20 @@
             android:layout_marginBottom="6dp">
 
             <ImageView
-
                 android:id="@+id/country_flag"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="15dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/flag_default"
-                app:srcCompat="@drawable/flag_default" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/ic_flagss" />
 
             <TextView
                 android:id="@+id/region_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/country_flag"
                 android:text="@string/default_region_country"
                 android:textColor="@color/colorPrimary"
@@ -63,10 +59,12 @@
 
             <ImageView
                 android:id="@+id/region_limit"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_signal"
+                android:src="@drawable/ic_signals"
+                app:tint="@color/blue"
                 android:visibility="visible" />
 
         </RelativeLayout>
@@ -87,7 +85,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/flag_default" />
+                app:srcCompat="@drawable/ic_flagss" />
 
             <TextView
                 android:id="@+id/region_title1"
@@ -100,7 +98,6 @@
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
                 tools:ignore="RtlSymmetry" />
-
             <ImageView
                 android:id="@+id/region_limit1"
                 android:layout_width="0dp"
@@ -109,7 +106,7 @@
                 android:layout_weight="0.5"
                 android:paddingEnd="10dp"
                 android:scaleType="fitEnd"
-                android:src="@drawable/server_signal_3"
+                android:src="@drawable/no_signals"
                 android:visibility="visible"
                 tools:ignore="RtlSymmetry" />
         </LinearLayout>

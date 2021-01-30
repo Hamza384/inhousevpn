@@ -13,6 +13,8 @@ repositories {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 ext {
     androidSupportLibraryVersion = "28.0.0"
@@ -22,7 +24,7 @@ android {
     compileSdkVersion 29
 
     defaultConfig {
-        applicationId 'com.free.vpn'
+        applicationId 'com.free.vpn.unblock.proxy.usavpn'
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 12
@@ -154,5 +156,11 @@ dependencies {
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
     //in app review
     implementation 'com.google.android.play:core:1.9.0'
+    //crashlytics and analytics
+
+    implementation 'com.google.firebase:firebase-core:18.0.1'
+    implementation 'com.google.firebase:firebase-ads:19.7.0'
+    implementation 'com.google.firebase:firebase-analytics:18.0.1'
+    implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
 
 }

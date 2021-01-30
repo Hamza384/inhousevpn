@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/action_glob"
-        android:icon="@drawable/flag_default"
+        android:icon="@drawable/ic_flagss"
         android:title="Global"
         app:showAsAction="always" />
 

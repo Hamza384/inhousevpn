@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Premium VPN</string>
+    <string name="app_name">VPN</string>
     <string name="vpn_process_name" translatable="false">:my.custom.vpn.process.name</string>
     <string name="vpn_provider_authorities" translatable="false">com.anchorfree.hydrasdk.app.demo</string>
     <string name="version">Version 1.0</string>
@@ -14,12 +14,13 @@
     <string name="no">no</string>
     <string name="yes">yes</string>
     <string name="are_you_sure_you_want_to_exit">Are you sure you want to exit?</string>
+    <string name="update_Service">We Will update our services soon for Premium Servers</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Premium VPN</string>
     <string name="action_settings">Settings</string>
     <bool name="ads_switch">true</bool>
-    <string name="admob_appid">ca-app-pub-9259101471660565~2719454180</string>
+    <string name="admob_appid">ca-app-pub-3940256099942544~3347511713</string>
     <string name="admob_banner">ca-app-pub-3940256099942544/6300978111</string>
     <string name="admob_native">ca-app-pub-3940256099942544/2247696110</string>
     <string name="admob_intersitail">ca-app-pub-3940256099942544/1033173712</string>
@@ -62,9 +63,52 @@
     <string name="go_premium">Go Premium</string>
     <string name="selected">Selected</string>
     <string name="status">Status : </string>
-    <string name="xtreme_vpn">Xtreme VPN</string>
+    <string name="xtreme_vpn">QuickVPN</string>
     <string name="monthly">Monthly</string>
     <string name="buy_now">Buy Now</string>
     <string name="_6_month">6 Month</string>
     <string name="_12_month">12 Month</string>
+    <string name="unlock">Unlock</string>
+
+    <string name="privacypolicy" translatable="false"><![CDATA[<p><strong>Privacy Policy</strong></p>
+<p>This document ("Privacy Policy") explains the privacy rules applicable to all information collected or submitted when you access, install, or use the QuickVPN Services.</p>
+<p>By visiting our privacy, you confirm that you have read this Privacy Policy and agree to be bound by this Privacy Policy. If you disagree with the rules of this Privacy Policy, please do not use our Services.</p>
+<p>Information in this Privacy Policy is provided in layers, meaning that all information related to general personal data processing practices is provided here.</p>
+<p><strong>How we Process your Data</strong></p>
+<p>QuickVPN app processes user data to a limited scope &ndash; for provision of the Services, processing payments for the Services, as well as the functioning of our websites and mobile applications. We process the following basic information:</p>
+<p><strong>Information collected on our app</strong></p>
+<p>As most apps on the internet, VPN app collects access logs (such as IP address, browser type, operating system) to operate our services and ensure their secure, reliable, and robust performance. This in Log</p>
+<p><strong>Data</strong></p>
+<p>We want to inform you that whenever you use our Service, in a case of an error in the app we will collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol address, device name, operating system version, the configuration of the app when utilizing our Service, the time and date of your use of the Service, and other statistics.</p>
+<p><strong>Cookies</strong></p>
+<p>Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your devices internal memory.</p>
+<p>This Service does not use these &ldquo;cookies&rdquo; explicitly. However, the app may use third party code and libraries that use &ldquo;cookies&rdquo; to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.</p>
+<p><strong>Service Providers</strong></p>
+<p>We may employ third-party companies and individuals due to the following reasons:</p>
+<p>To facilitate our Service;</p>
+<p>To provide the Service on our behalf;</p>
+<p>To perform Service-related services; or</p>
+<p>To assist us in analyzing how our Service is used.</p>
+<p>We want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.</p>
+<p><strong>Security</strong></p>
+<p>We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and We cannot guarantee its absolute security.</p>
+<p><strong>Links to Other Sites</strong></p>
+<p>This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by [me/us]. Therefore, we strongly advise you to review the Privacy Policy of these websites. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
+<p><strong>Children&rsquo;s Privacy</strong></p>
+<p>These Services do not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13. In the case we discover that a child under 13 has provided us with personal information, we immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us so that we will be able to do necessary actions.</p>
+<p><strong>Sharing your personal data</strong></p>
+<p>We do not share your personal information with third parties except as described in this Privacy Policy.</p>
+<p>Service providers. We use third-party service providers to help us with various operations, such as payment processing, email automation, website and app diagnostics, analytics and other. As a result, some of these providers may process personal information.</p>
+<p>Sometimes our service providers, for example, distributors, resellers, and app store partners, will be independent controllers of your data. Their terms and conditions and privacy policies will apply to such relationships.</p>
+<p>Your personal information may be processed in any country in which we engage service providers. When you use our Services, you acknowledge the transfer of your personal information outside of the country where you reside.</p>
+<p><strong>Choices related to your data</strong></p>
+<p>If you&rsquo;d like to edit your profile information, delete your account or data, please contact our support team. Please note that you may need to pass through a couple of account verification steps so that we can verify you are the owner of the account.</p>
+<p>If you disagree with the processing of your data by QuickVPN, please do not use our Services. You can request us to discontinue processing your personal data, in which case your data will be processed only as much as it is necessary to effect the discontinuation of your use of the Services (e.g., final settlement, or deleting all personal data based on your email address), or finalizing other QuickVPN legal relationship with you (e.g., record keeping, accounting, processing refunds).</p>
+<p>If you wish to use the QuickVPN again, you will have to accept and agree to this Privacy Policy.</p>
+<p>Data security</p>
+<p>We take data security very seriously and take all steps reasonably necessary to secure your data (whether technical, physical, or administrative).</p>]]></string>
+    <string name="free_server">Free Server</string>
+    <string name="vip_server">VIP Server</string>
+    <string name="use_imageview">use_imageview</string>
+
 </resources>

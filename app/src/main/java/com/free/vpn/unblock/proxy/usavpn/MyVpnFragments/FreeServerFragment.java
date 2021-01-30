@@ -18,13 +18,15 @@ import com.anchorfree.partner.api.response.AvailableCountries;
 import com.anchorfree.sdk.UnifiedSDK;
 import com.anchorfree.vpnsdk.callbacks.Callback;
 import com.anchorfree.vpnsdk.exceptions.VpnException;
+import com.free.vpn.unblock.proxy.usavpn.R;
 import com.google.android.gms.ads.InterstitialAd;
-import com.free.vpn.R;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnAdapters.ServerListAdapterFree;
 import com.free.vpn.unblock.proxy.usavpn.Config;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class FreeServerFragment extends Fragment implements ServerListAdapterFree.RegionListAdapterInterface {
     private RecyclerView recyclerView;
@@ -50,9 +52,14 @@ public class FreeServerFragment extends Fragment implements ServerListAdapterFre
         recyclerView.setAdapter(adapter);
 
         //simple adapter
-        if (getResources().getBoolean(R.bool.ads_switch) && getResources().getBoolean(R.bool.facebook_list_ads) && (!Config.ads_subscription && !Config.all_subscription&& !Config.vip_subscription)) {
+        /*if (getResources().getBoolean(R.bool.ads_switch) && getResources().getBoolean(R.bool.facebook_list_ads) &&
+                (!Config.ads_subscription && !Config.all_subscription&& !Config.vip_subscription)) {
             isAds = true;
-        } else isAds = getResources().getBoolean(R.bool.ads_switch) && getResources().getBoolean(R.bool.admob_list_ads) && (!Config.ads_subscription && !Config.all_subscription && !Config.vip_subscription);
+        }
+        else isAds = getResources().getBoolean(R.bool.ads_switch) && getResources().getBoolean(R.bool.admob_list_ads) &&
+                (!Config.ads_subscription && !Config.all_subscription && !Config.vip_subscription);*/
+
+
         return view;
     }
 
@@ -67,7 +74,7 @@ public class FreeServerFragment extends Fragment implements ServerListAdapterFre
             @Override
             public void success(@NonNull AvailableCountries availableCountries) {
                 List<Country> countries = availableCountries.getCountries();
-                for (int i = 0; i < countries.size(); i++) {
+                /*for (int i = 0; i < countries.size(); i++) {
                     if(isAds){
                         if (i % 2 == 0) {
                             countryArrayList.add(countries.get(i));
@@ -79,7 +86,8 @@ public class FreeServerFragment extends Fragment implements ServerListAdapterFre
 
                     }
 
-                }
+                }*/
+                countryArrayList.addAll(countries);
                 adapter.setData(countryArrayList);
                 animationHolder.setVisibility(View.GONE);
 

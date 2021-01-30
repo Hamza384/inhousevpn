@@ -13,11 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.anchorfree.partner.api.data.Country;
 import com.anchorfree.partner.api.response.RemainingTraffic;
-import com.free.vpn.R;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.MainActivity;
+import com.free.vpn.unblock.proxy.usavpn.R;
 
 import java.util.ArrayList;
 import java.util.Locale;
+
 
 public class ServerListAdapterVip extends RecyclerView.Adapter<ServerListAdapterVip.mViewhoder> {
 
@@ -47,7 +48,7 @@ public class ServerListAdapterVip extends RecyclerView.Adapter<ServerListAdapter
         holder.flag.setImageResource(mContext.getResources().getIdentifier("drawable/" +data.getCountry().toLowerCase(),null, mContext.getPackageName()));
         holder.app_name.setText(locale.getDisplayCountry());
         holder.limit.setText("VIP");
-        holder.limit.setTextColor(mContext.getResources().getColor(R.color.primary));
+        holder.limit.setTextColor(mContext.getResources().getColor(R.color.blue));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

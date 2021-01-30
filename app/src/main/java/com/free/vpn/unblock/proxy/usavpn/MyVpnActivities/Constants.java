@@ -6,8 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 
 import com.free.vpn.unblock.proxy.usavpn.MyVpnUtils.VpnDailyNotificationReceiver;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.Calendar;
 
@@ -58,6 +60,12 @@ public class Constants {
             time.setTimeInMillis(oldTime + add);
         }
         return time;
+    }
+
+    public static void sendAnalytics(FirebaseAnalytics analytics, String message) {
+        Bundle bundle = new Bundle();
+        bundle.putString("Activity_Name", message);
+        analytics.logEvent("Activity_Name", bundle);
     }
 
 }

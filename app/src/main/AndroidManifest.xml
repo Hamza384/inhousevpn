@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.free.vpn">
-
+    package="com.free.vpn.unblock.proxy.usavpn">
 
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
         android:name="com.free.vpn.unblock.proxy.usavpn.App"
@@ -28,9 +29,19 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_appid" />
 
+
+        <activity
+            android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnUtils.VpnDailyNotification"
+            android:screenOrientation="locked"
+            android:theme="@style/Transparent" />
+        <receiver android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnUtils.VpnDailyNotificationReceiver" />
+
+
         <activity
             android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.WelcomeActivity"
             android:theme="@style/AppTheme1" />
+
+        <activity android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.PrivacyActivity" />
         <activity
             android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.SplashActivity"
             android:theme="@style/Splashscreentheme">
@@ -44,6 +55,25 @@
             android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.ServersActivity"
             android:parentActivityName="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.MainActivity" />
         <activity android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.MainActivity" />
+        <activity android:name="com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.AboutActivity" />
+
+
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.measurement.UPLOAD" />
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="true" />
+
     </application>
 
 </manifest>

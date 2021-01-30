@@ -24,16 +24,11 @@
     <color name="colorGrey">#dcdcdc</color>
     <color name="toolbarTitle">#cbecfd</color>
     <color name="toolbarBg">#356690</color>
-
     <color name="buttonText">#cbecfd</color>
     <color name="buttonBg">#356690</color>
-
     <color name="totalServers">#ffffff</color>
-
     <color name="infoServersList">#1c3f61</color>
-
     <color name="ratingNot">#A7A7A7</color>
-
     <color name="activeServer">#093e68</color>
     <color name="additionalServer">#ffffff</color>
     <color name="serverNameBg">#cbecfd</color>
@@ -44,5 +39,4 @@
     <color name="red">#f63030</color>
     <color name="sea_green">#00FEFE</color>
     <color name="blue">#0078FA</color>
-
 </resources>

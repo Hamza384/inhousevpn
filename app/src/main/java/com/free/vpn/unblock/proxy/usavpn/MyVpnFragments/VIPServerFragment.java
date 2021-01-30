@@ -20,14 +20,15 @@ import com.anchorfree.partner.api.response.AvailableCountries;
 import com.anchorfree.sdk.UnifiedSDK;
 import com.anchorfree.vpnsdk.callbacks.Callback;
 import com.anchorfree.vpnsdk.exceptions.VpnException;
-import com.free.vpn.R;
 import com.efaso.admob_advanced_native_recyvlerview.AdmobNativeAdAdapter;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.UnlockAllActivity;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnAdapters.FbNativeAdapter;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnAdapters.ServerListAdapterVip;
 import com.free.vpn.unblock.proxy.usavpn.Config;
+import com.free.vpn.unblock.proxy.usavpn.R;
 
 import java.util.ArrayList;
+
 
 public class VIPServerFragment extends Fragment implements ServerListAdapterVip.RegionListAdapterInterface {
 

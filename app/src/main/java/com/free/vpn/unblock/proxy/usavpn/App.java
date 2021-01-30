@@ -14,23 +14,32 @@ import com.anchorfree.sdk.TransportConfig;
 import com.anchorfree.sdk.UnifiedSDK;
 import com.anchorfree.sdk.UnifiedSDKConfig;
 import com.anchorfree.vpnsdk.callbacks.CompletableCallback;
-import com.free.vpn.BuildConfig;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.northghost.caketube.OpenVpnTransportConfig;
-import com.free.vpn.R;
 import com.onesignal.OneSignal;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class App extends Application {
 
 
     private UnifiedSDK unifiedSDK;
+    public FirebaseAnalytics mFirebaseAnalytics;
+    public static App appInstance;
+
+    public static synchronized App getInstance() {
+        return appInstance;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        appInstance = this;
 
         //Prefs lib
         new Prefs.Builder()

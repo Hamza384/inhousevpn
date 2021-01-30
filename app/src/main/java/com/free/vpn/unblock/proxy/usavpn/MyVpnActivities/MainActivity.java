@@ -1,5 +1,6 @@
 package com.free.vpn.unblock.proxy.usavpn.MyVpnActivities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
@@ -27,19 +28,21 @@ import com.anchorfree.vpnsdk.transporthydra.HydraVpnTransportException;
 import com.anchorfree.vpnsdk.vpnservice.VPNState;
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.anjlab.android.iab.v3.TransactionDetails;
+import com.free.vpn.unblock.proxy.usavpn.R;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.northghost.caketube.CaketubeTransport;
 import com.free.vpn.unblock.proxy.usavpn.Config;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnFragments.VIPServerFragment;
-import com.free.vpn.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+
 
 public class MainActivity extends MainContentActivity implements
         TrafficListener, VpnStateListener, VIPServerFragment.RegionChooserInterface, BillingProcessor.IBillingHandler {
@@ -48,6 +51,8 @@ public class MainActivity extends MainContentActivity implements
     private Locale locale;
 
     private BillingProcessor bp;
+    FirebaseAnalytics mFirebaseAnalytics;
+    Context mContext;
 
     @Override
     protected void onStart() {
@@ -64,6 +69,10 @@ public class MainActivity extends MainContentActivity implements
         UnifiedSDK.addTrafficListener(this);
         UnifiedSDK.addVpnStateListener(this);
         loginToVpn();
+
+        mContext = MainActivity.this;
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(mContext);
+        Constants.sendAnalytics(mFirebaseAnalytics, "MainActivity");
 
 
         Intent intent = getIntent();

@@ -14,23 +14,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.anchorfree.partner.api.data.Country;
 import com.anchorfree.partner.api.response.RemainingTraffic;
+import com.free.vpn.unblock.proxy.usavpn.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.free.vpn.R;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+
+
 public class ServerListAdapterFree extends RecyclerView.Adapter<ServerListAdapterFree.mViewhoder> {
 
     ArrayList<Country> datalist = new ArrayList<>();
     private final Context context;
     RemainingTraffic remainingTrafficResponse;
-    private final int AD_TYPE = 0;
-    private final int CONTENT_TYPE = 1;
+    /*private final int AD_TYPE = 0;
+    private final int CONTENT_TYPE = 1;*/
     public ServerListAdapterFree( Context ctx) {
         this.context=ctx;
     }
@@ -41,7 +43,7 @@ public class ServerListAdapterFree extends RecyclerView.Adapter<ServerListAdapte
     {
         AdView adview;
 
-        if (viewType == AD_TYPE) {
+       /* if (viewType == AD_TYPE) {
             adview = new AdView(context);
             adview.setAdSize(AdSize.BANNER);
             adview.setAdUnitId(context.getString(R.string.banner_ads_id));
@@ -52,21 +54,21 @@ public class ServerListAdapterFree extends RecyclerView.Adapter<ServerListAdapte
             AdRequest request = new AdRequest.Builder().build();
             adview.loadAd(request);
             return new mViewhoder(adview);
-        } else {
+        } else {*/
             View view = LayoutInflater.from(context).inflate(R.layout.server_list_free, parent, false);
             return new mViewhoder(view);
-        }
+        /*}*/
     }
 
     @Override
     public void onBindViewHolder(@NonNull final mViewhoder holder, int position) {
-        if(getItemViewType(position) == CONTENT_TYPE){
+        /*if(getItemViewType(position) == CONTENT_TYPE){*/
             remainingTrafficResponse=new RemainingTraffic();
             Country data=datalist.get(position);
             Locale locale=new Locale("",data.getCountry());
             holder.flag.setImageResource(context.getResources().getIdentifier("drawable/"+data.getCountry().toLowerCase(),null,context.getPackageName()));
             holder.app_name.setText(locale.getDisplayCountry());
-            holder.limit.setImageResource(R.drawable.ic_signal);
+            holder.limit.setImageResource(R.drawable.ic_signals);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -79,7 +81,7 @@ public class ServerListAdapterFree extends RecyclerView.Adapter<ServerListAdapte
                 }
             });
 
-        }
+        /*}*/
 
     }
 
@@ -87,10 +89,12 @@ public class ServerListAdapterFree extends RecyclerView.Adapter<ServerListAdapte
     public int getItemCount() {
         return datalist.size();
     }
-    @Override
+
+
+    /*@Override
     public int getItemViewType(int position) {
         return datalist.get(position) ==null? AD_TYPE:CONTENT_TYPE;
-    }
+    }*/
 
     public static class mViewhoder extends RecyclerView.ViewHolder
     {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -42,7 +41,7 @@
         android:id="@+id/purchase_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/trans_layer"
+        android:background="@drawable/transparent_layer"
         android:clickable="true"
         android:focusable="true"
         android:visibility="visible">
@@ -61,10 +60,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/vip_unblock"
-            android:text="Unlock"
+            android:text="@string/unlock"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
-            android:textSize="22dp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
             android:visibility="gone" />
 

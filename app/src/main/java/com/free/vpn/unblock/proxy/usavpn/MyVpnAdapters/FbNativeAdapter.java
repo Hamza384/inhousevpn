@@ -14,7 +14,6 @@ import androidx.annotation.LayoutRes;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.free.vpn.R;
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdError;
 import com.facebook.ads.AdIconView;
@@ -22,9 +21,12 @@ import com.facebook.ads.AdOptionsView;
 import com.facebook.ads.MediaView;
 import com.facebook.ads.NativeAdLayout;
 import com.facebook.ads.NativeAdListener;
+import com.free.vpn.unblock.proxy.usavpn.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 
 public class FbNativeAdapter extends RvAdapter {

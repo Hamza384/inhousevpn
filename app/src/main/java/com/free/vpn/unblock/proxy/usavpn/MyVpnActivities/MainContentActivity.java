@@ -5,9 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.net.ConnectivityManager;
-import android.net.NetworkCapabilities;
-import android.net.NetworkInfo;
 import android.net.TrafficStats;
 import android.net.Uri;
 import android.os.Build;
@@ -43,15 +40,16 @@ import com.anchorfree.partner.exceptions.PartnerRequestException;
 import com.anchorfree.sdk.UnifiedSDK;
 import com.anchorfree.vpnsdk.exceptions.VpnException;
 import com.anchorfree.vpnsdk.vpnservice.VPNState;
+import com.free.vpn.unblock.proxy.usavpn.Config;
+import com.free.vpn.unblock.proxy.usavpn.MyVpnUtils.LocalFormat;
+import com.free.vpn.unblock.proxy.usavpn.R;
+import com.free.vpn.unblock.proxy.usavpn.speed.Speed;
 import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.VideoController;
-import com.google.android.gms.ads.VideoOptions;
 import com.google.android.gms.ads.formats.MediaView;
-import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
 import com.google.android.material.navigation.NavigationView;
@@ -65,18 +63,16 @@ import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.android.play.core.tasks.OnCompleteListener;
 import com.google.android.play.core.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.onesignal.OneSignal;
 import com.pixplicity.easyprefs.library.Prefs;
 import com.skyfishjy.library.RippleBackground;
-import com.free.vpn.unblock.proxy.usavpn.Config;
-import com.free.vpn.unblock.proxy.usavpn.MyVpnUtils.LocalFormat;
-import com.free.vpn.R;
-import com.free.vpn.unblock.proxy.usavpn.speed.Speed;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.dmoral.toasty.Toasty;
+
 
 public abstract class MainContentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -128,6 +124,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
     ReviewManager manager;
     ReviewInfo reviewInfo;
     androidx.appcompat.app.AlertDialog alertDialog;
+    FirebaseAnalytics mFirebaseAnalytics;
     private long startTime = 0L;
     private final Runnable updateTimerThread = new Runnable() {
 
@@ -174,9 +171,13 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
         mContext = MainContentActivity.this;
         lottieAnimationView = findViewById(R.id.animation_view);
 
+
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(mContext);
+        Constants.sendAnalytics(mFirebaseAnalytics, "MainContent Activity");
 
         manager = ReviewManagerFactory.create(this);
         callInAppUpdate();
@@ -185,7 +186,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
 
         final RippleBackground rippleBackground = findViewById(R.id.content);
         rippleBackground.startRippleAnimation();
-        
+
 
         drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -213,9 +214,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
             //interstitial
             mInterstitialAd = new InterstitialAd(this);
             mInterstitialAd.setAdUnitId(getString(R.string.admob_intersitail));
-            mInterstitialAd.loadAd(new AdRequest.Builder()
-                    .addTestDevice("91b511f6-d4ab-4a6b-94fa-e538dfbee85f")
-                    .build());
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         }
 
@@ -228,7 +227,8 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
                         STATUS = "Disconnect";
 
                         if (mInterstitialAd.isLoaded()) {
-                            mInterstitialAd.show();
+                            /*mInterstitialAd.show();*/
+                            disconnectAlert();
                         } else {
                             disconnectAlert();
                         }
@@ -238,7 +238,9 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
 
                         if (mInterstitialAd.isLoaded()) {
 //                        Interstitial Ad loaded successfully...
-                            mInterstitialAd.show();
+                            /*mInterstitialAd.show();*/
+                            updateUI();
+                            connectToVpn();
                         } else {
 
                             updateUI();
@@ -290,9 +292,6 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
     private void rateUsDialog(int layout) {
         androidx.appcompat.app.AlertDialog.Builder dialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(this);
         View layoutView = getLayoutInflater().inflate(layout, null);
-        /*mAdView = layoutView.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
         Button exitButton = layoutView.findViewById(R.id.btnExit);
         Button closedialogButton = layoutView.findViewById(R.id.btnCloseDialog);
         dialogBuilder.setView(layoutView);
@@ -313,34 +312,20 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.nav_upgrade) {
-
-        } else if (id == R.id.nav_helpus) {
-            Intent intent = new Intent(Intent.ACTION_SENDTO);
-            intent.setData(Uri.parse("mailto:"));
-            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"youremail@gmail.com"}); // Put Your Support Email Here
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Send Bug Report");
-            intent.putExtra(Intent.EXTRA_TEXT, "Please Give Your Feedback ");
-
-            try {
-                startActivity(Intent.createChooser(intent, "send mail"));
-            } catch (ActivityNotFoundException ex) {
-                Toast.makeText(this, "No mail app found!!!", Toast.LENGTH_SHORT).show();
-            } catch (Exception ex) {
-                Toast.makeText(this, "Unexpected Error!!!", Toast.LENGTH_SHORT).show();
-            }
-        } else if (id == R.id.nav_rate) {
-//            rate application...
+        if (id == R.id.nav_rate) {
             rateUs();
         } else if (id == R.id.nav_share) {
             shareApp(Constants.shareSubject, Constants.shareMessage);
         } else if (id == R.id.nav_policy) {
-            Uri uri = Uri.parse(getResources().getString(R.string.privacy_policy_link));
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            Intent intent = new Intent(mContext, PrivacyActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_about_us) {
+            Intent intent = new Intent(mContext, AboutActivity.class);
             startActivity(intent);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -379,9 +364,9 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
 
     @Override
     protected void onDestroy() {
-        if (nativeAd != null) {
+        /*if (nativeAd != null) {
             nativeAd.destroy();
-        }
+        }*/
         super.onDestroy();
     }
 
@@ -395,7 +380,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
             public void success(@NonNull Boolean aBoolean) {
                 if (aBoolean) {
                     STATUS = "Disconnect";
-                    if (mInterstitialAd != null) mInterstitialAd.setAdListener(new AdListener() {
+                    /*if (mInterstitialAd != null) mInterstitialAd.setAdListener(new AdListener() {
                         @Override
                         public void onAdLoaded() {
                             // Code to be executed when an ad finishes loading.
@@ -435,17 +420,19 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
                             // Code to be executed when the interstitial ad is closed.
                             disconnectAlert();
                         }
-                    });
+                    });*/
+                    disconnectAlert();
                     if (getResources().getBoolean(R.bool.ads_switch) && (!Config.ads_subscription && !Config.all_subscription && !Config.vip_subscription)) {
 
                         if (mInterstitialAd.isLoaded()) {
-                            mInterstitialAd.show();
+                            /*mInterstitialAd.show();*/
+                            disconnectAlert();
                         } else {
-                            AdRequest request = new AdRequest.Builder()
+                            /*AdRequest request = new AdRequest.Builder()
                                     .addTestDevice("91b511f6-d4ab-4a6b-94fa-e538dfbee85f")
                                     .build();
-                            mInterstitialAd.loadAd(request);
-
+                            mInterstitialAd.loadAd(request);*/
+                            disconnectAlert();
                         }
 
                     } else {
@@ -457,7 +444,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
 
                     if (getResources().getBoolean(R.bool.ads_switch) && (!Config.ads_subscription && !Config.all_subscription && !Config.vip_subscription)) {
 //                        Interstitial Ad loaded successfully...
-                        mInterstitialAd.setAdListener(new AdListener() {
+                        /*mInterstitialAd.setAdListener(new AdListener() {
                             @Override
                             public void onAdLoaded() {
                                 // Code to be executed when an ad finishes loading.
@@ -497,14 +484,18 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
                                 updateUI();
                                 connectToVpn();
                             }
-                        });
+                        });*/
+                        updateUI();
+                        connectToVpn();
                         if (mInterstitialAd.isLoaded()) {
-                            mInterstitialAd.show();
+                            /*mInterstitialAd.show();*/
+                            updateUI();
+                            connectToVpn();
                         } else {
-                            AdRequest request = new AdRequest.Builder()
+                            /*AdRequest request = new AdRequest.Builder()
                                     .addTestDevice("91b511f6-d4ab-4a6b-94fa-e538dfbee85f")
                                     .build();
-                            mInterstitialAd.loadAd(request);
+                            mInterstitialAd.loadAd(request);*/
                             updateUI();
                             connectToVpn();
                         }
@@ -680,11 +671,10 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
         Toast.makeText(MainContentActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void rateUs() {
         Uri uri = Uri.parse("market://details?id=" + this.getPackageName());
         Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-        // To count with Play market backstack, After pressing back button,
-        // to taken back to our application, we need to add following flag to intent.
         goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
                 Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
                 Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
@@ -708,7 +698,6 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
     protected void loadIcon() {
         if (vpnState == VPNState.IDLE) {
             t_connection_status.setText("Not Selected");
-            /*i_connection_status_image.setImageResource(R.drawable.ic_dot);*/
 
         } else if (vpnState == VPNState.CONNECTING_VPN || vpnState == VPNState.CONNECTING_CREDENTIALS) {
             connectBtnTextView.setVisibility(View.VISIBLE);
@@ -721,7 +710,6 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
                 Toasty.success(MainContentActivity.this, "Server Connected", Toast.LENGTH_SHORT).show();
                 vpnToastCheck = false;
             }
-            /*i_connection_status_image.setImageResource(R.drawable.ic_dot);*/
 
         }
     }
@@ -748,27 +736,17 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
     }
 
     //loading native ad
-    private void populateUnifiedNativeAdView(UnifiedNativeAd nativeAd, UnifiedNativeAdView
-            adView) {
-        // Set the media view. Media content will be automatically populated in the media view once
+
+    /*private void populateUnifiedNativeAdView(UnifiedNativeAd nativeAd, UnifiedNativeAdView adView) {
         MediaView mediaView = adView.findViewById(R.id.ad_media);
         adView.setMediaView(mediaView);
-
-        // Set other ad assets.
         adView.setHeadlineView(adView.findViewById(R.id.ad_headline));
         adView.setBodyView(adView.findViewById(R.id.ad_body));
         adView.setCallToActionView(adView.findViewById(R.id.ad_call_to_action));
         adView.setIconView(adView.findViewById(R.id.ad_app_icon));
-        /*adView.setPriceView(adView.findViewById(R.id.ad_price));*/
         adView.setStarRatingView(adView.findViewById(R.id.ad_stars));
-        /*adView.setStoreView(adView.findViewById(R.id.ad_store));*/
         adView.setAdvertiserView(adView.findViewById(R.id.ad_advertiser));
-
-        // The headline is guaranteed to be in every UnifiedNativeAd.
         ((TextView) adView.getHeadlineView()).setText(nativeAd.getHeadline());
-
-        // These assets aren't guaranteed to be in every UnifiedNativeAd, so it's important to
-        // check before trying to display them.
         if (nativeAd.getBody() == null) {
             adView.getBodyView().setVisibility(View.INVISIBLE);
         } else {
@@ -790,21 +768,6 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
                     nativeAd.getIcon().getDrawable());
             adView.getIconView().setVisibility(View.VISIBLE);
         }
-
-        /*if (nativeAd.getPrice() == null) {
-            adView.getPriceView().setVisibility(View.INVISIBLE);
-        } else {
-            adView.getPriceView().setVisibility(View.VISIBLE);
-            ((TextView) adView.getPriceView()).setText(nativeAd.getPrice());
-        }*/
-
-        /*if (nativeAd.getStore() == null) {
-            adView.getStoreView().setVisibility(View.INVISIBLE);
-        } else {
-            adView.getStoreView().setVisibility(View.VISIBLE);
-            ((TextView) adView.getStoreView()).setText(nativeAd.getStore());
-        }*/
-
         if (nativeAd.getStarRating() == null) {
             adView.getStarRatingView().setVisibility(View.INVISIBLE);
         } else {
@@ -819,48 +782,37 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
             ((TextView) adView.getAdvertiserView()).setText(nativeAd.getAdvertiser());
             adView.getAdvertiserView().setVisibility(View.VISIBLE);
         }
-
-        // This method tells the Google Mobile Ads SDK that you have finished populating your
-        // native ad view with this native ad. The SDK will populate the adView's MediaView
-        // with the media content from this native ad.
         adView.setNativeAd(nativeAd);
-
-        // Get the video controller for the ad. One will always be provided, even if the ad doesn't
-        // have a video asset.
         VideoController vc = nativeAd.getVideoController();
-
-        // Updates the UI to say whether or not this ad has a video asset.
         if (vc.hasVideoContent()) {
 
-            // Create a new VideoLifecycleCallbacks object and pass it to the VideoController. The
-            // VideoController will call methods on this object when events occur in the video
-            // lifecycle.
             vc.setVideoLifecycleCallbacks(new VideoController.VideoLifecycleCallbacks() {
                 @Override
                 public void onVideoEnd() {
-                    // Publishers should allow native ads to complete video playback before
-                    // refreshing or replacing them with another ad in the same UI location.
-
                     super.onVideoEnd();
                 }
             });
         } else {
         }
-    }
+    }*/
+
 
     /**
      * Creates a request for a new native ad based on the boolean parameters and calls the
      * corresponding "populate" method when one is successfully returned.
      */
-    private void refreshAd() {
+
+
+
+
+
+    /*private void refreshAd() {
 
         AdLoader.Builder builder = new AdLoader.Builder(this, getString(R.string.admob_native));
 
         builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
             @Override
             public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
-                // You must call destroy on old ads when you are done with them,
-                // otherwise you will have a memory leak.
                 if (nativeAd != null) {
                     nativeAd.destroy();
                 }
@@ -896,8 +848,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
         adLoader.loadAd(new AdRequest.Builder()
                 .addTestDevice("91b511f6-d4ab-4a6b-94fa-e538dfbee85f")
                 .build());
-    }
-
+    }*/
     @OnClick(R.id.purchase_layout)
     void goPurchase() {
         startActivity(new Intent(this, UnlockAllActivity.class));
@@ -961,7 +912,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
         if (getResources().getBoolean(R.bool.ads_switch) && (!Config.ads_subscription && !Config.all_subscription && !Config.vip_subscription)) {
             //native
             Log.d(TAG, "onStart----: ");
-            refreshAd();
+            /*refreshAd();*/
             //interstitital
             mInterstitialAd.setAdListener(new AdListener() {
 
@@ -1057,7 +1008,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
                 Toast.makeText(mContext, "Update Started", Toast.LENGTH_SHORT).show();
                 if (resultCode != RESULT_OK) {
                     Log.d("TAG", "Update flow failed! Result code: " + resultCode);
-                }else{
+                } else {
                 }
 
             }
