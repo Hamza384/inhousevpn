@@ -21,10 +21,10 @@ import com.anchorfree.sdk.UnifiedSDK;
 import com.anchorfree.vpnsdk.callbacks.Callback;
 import com.anchorfree.vpnsdk.exceptions.VpnException;
 import com.efaso.admob_advanced_native_recyvlerview.AdmobNativeAdAdapter;
+import com.free.vpn.unblock.proxy.usavpn.Config;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.UnlockAllActivity;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnAdapters.FbNativeAdapter;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnAdapters.ServerListAdapterVip;
-import com.free.vpn.unblock.proxy.usavpn.Config;
 import com.free.vpn.unblock.proxy.usavpn.R;
 
 import java.util.ArrayList;
@@ -89,13 +89,14 @@ public class VIPServerFragment extends Fragment implements ServerListAdapterVip.
             //simple adapter
             recyclerView.setAdapter(adapter);
         }
+        /*loadServers();*/
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        /*loadServers();*/
         loadServers();
     }
 
@@ -117,7 +118,7 @@ public class VIPServerFragment extends Fragment implements ServerListAdapterVip.
             public void failure(@NonNull VpnException e) {
 
             }
-        } );
+        });
     }
 
     @Override

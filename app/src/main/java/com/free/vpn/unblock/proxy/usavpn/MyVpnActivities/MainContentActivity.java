@@ -162,6 +162,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
     private long mLastTxBytes = 0;
     private long mLastTime = 0;
     private Speed mSpeed;
+    Button btnCrash;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -178,6 +179,15 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(mContext);
         Constants.sendAnalytics(mFirebaseAnalytics, "MainContent Activity");
+
+        /*btnCrash = findViewById(R.id.btnCrash);
+        btnCrash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                throw new RuntimeException("Test Crash"); // Force a crash
+            }
+        });*/
+
 
         manager = ReviewManagerFactory.create(this);
         callInAppUpdate();
@@ -552,7 +562,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
                 switch (vpnState) {
                     case IDLE: {
                         loadIcon();
-                        connectBtnTextView.setImageResource(R.drawable.ic_switch);
+                        connectBtnTextView.setImageResource(R.drawable.ic_connects);
                         connectBtnTextView.setEnabled(true);
                         connectionStateTextView.setText(R.string.disconnected);
                         timerTextView.setVisibility(View.GONE);

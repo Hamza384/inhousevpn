@@ -192,8 +192,11 @@ public class UnlockAllActivity extends AppCompatActivity implements BillingProce
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, ServersActivity.class);
+                alertDialog.dismiss();
+                Intent intent = new Intent(mContext,ServersActivity.class);
                 startActivity(intent);
+                finish();
+
             }
         });
     }

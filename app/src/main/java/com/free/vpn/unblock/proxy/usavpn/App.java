@@ -51,10 +51,10 @@ public class App extends Application {
 
         //  OneSignal Initialization
 
-        OneSignal.startInit(this)
+        /*OneSignal.startInit(this)
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
-                .init();
+                .init();*/
 
         hydraInit();
     }

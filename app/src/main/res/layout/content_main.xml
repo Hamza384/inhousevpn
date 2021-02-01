@@ -122,7 +122,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:rb_duration="2000"
-                        app:rb_radius="22dp"
+                        app:rb_radius="20dp"
                         app:rb_rippleAmount="4"
                         app:rb_scale="5">
 
@@ -465,11 +465,23 @@
                     </TextView>
 
 
+
+
+
+
                 </LinearLayout>
+
+
 
 
             </LinearLayout>
 
+
+            <!--<Button
+                android:id="@+id/btnCrash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crash"/>-->
 
         </LinearLayout>
 

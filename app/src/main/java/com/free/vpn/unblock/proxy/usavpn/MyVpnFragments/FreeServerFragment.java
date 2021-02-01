@@ -18,24 +18,22 @@ import com.anchorfree.partner.api.response.AvailableCountries;
 import com.anchorfree.sdk.UnifiedSDK;
 import com.anchorfree.vpnsdk.callbacks.Callback;
 import com.anchorfree.vpnsdk.exceptions.VpnException;
+import com.free.vpn.unblock.proxy.usavpn.MyVpnAdapters.ServerListAdapterFree;
 import com.free.vpn.unblock.proxy.usavpn.R;
 import com.google.android.gms.ads.InterstitialAd;
-import com.free.vpn.unblock.proxy.usavpn.MyVpnAdapters.ServerListAdapterFree;
-import com.free.vpn.unblock.proxy.usavpn.Config;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class FreeServerFragment extends Fragment implements ServerListAdapterFree.RegionListAdapterInterface {
+    int server;
+    InterstitialAd mInterstitialAd;
+    boolean isAds;
     private RecyclerView recyclerView;
     private ServerListAdapterFree adapter;
     private ArrayList<Country> countryArrayList;
     private VIPServerFragment.RegionChooserInterface regionChooserInterface;
-    int server;
-    InterstitialAd mInterstitialAd;
-    boolean isAds;
     private RelativeLayout animationHolder;
 
 
@@ -59,13 +57,14 @@ public class FreeServerFragment extends Fragment implements ServerListAdapterFre
         else isAds = getResources().getBoolean(R.bool.ads_switch) && getResources().getBoolean(R.bool.admob_list_ads) &&
                 (!Config.ads_subscription && !Config.all_subscription && !Config.vip_subscription);*/
 
-
+        /*loadServers();*/
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        /*loadServers();*/
         loadServers();
     }
 
@@ -87,7 +86,9 @@ public class FreeServerFragment extends Fragment implements ServerListAdapterFre
                     }
 
                 }*/
+
                 countryArrayList.addAll(countries);
+
                 adapter.setData(countryArrayList);
                 animationHolder.setVisibility(View.GONE);
 

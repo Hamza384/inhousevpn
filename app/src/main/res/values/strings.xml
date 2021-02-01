@@ -13,6 +13,7 @@
     <string name="paused"> Paused</string>
     <string name="no">no</string>
     <string name="yes">yes</string>
+    <string name="ok">Ok</string>
     <string name="are_you_sure_you_want_to_exit">Are you sure you want to exit?</string>
     <string name="update_Service">We Will update our services soon for Premium Servers</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

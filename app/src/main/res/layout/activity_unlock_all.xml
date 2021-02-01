@@ -152,7 +152,7 @@
                             android:layout_marginTop="90dp"
                             android:text="  3 Month"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_18ssp"
+                            android:textSize="@dimen/_16ssp"
                             android:textStyle="bold" />
 
                         <RadioButton
@@ -224,7 +224,7 @@
                             android:layout_marginTop="130dp"
                             android:text="@string/vip_price_6month"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_18ssp"
+                            android:textSize="@dimen/_16ssp"
                             android:textStyle="bold" />
 
                         <ImageView
@@ -259,7 +259,7 @@
                             android:layout_marginTop="90dp"
                             android:text="@string/_12_month"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_18ssp"
+                            android:textSize="@dimen/_16ssp"
                             android:textStyle="bold" />
 
                         <RadioButton
@@ -278,7 +278,7 @@
                             android:layout_marginTop="130dp"
                             android:text="@string/vip_price_12month"
                             android:textColor="@color/blue"
-                            android:textSize="@dimen/_18ssp"
+                            android:textSize="@dimen/_16ssp"
                             android:textStyle="bold" />
 
                         <ImageView

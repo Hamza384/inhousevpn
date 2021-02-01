@@ -20,10 +20,10 @@ public class Constants {
     public static final String CHANNEL_NAME = "VPN";
     public static final String CHANNEL_DESCRIPTION = "VPN";
     private static final String TAG = "Constants";
-    public static String NotifMessage = "VPN Message";
-    public static String shareSubject = "QR Code Maker & Barcode Generator";
-    public static String shareMessage = "QR Code Maker & Barcode Generator\nDownload Free Now\nhttps://play.google.com/store/apps/details?id=qrscanner.qrcodereader.qrscanner.barcodereader";
-    public static String NotifTitle = "VPN";
+    public static String NotifMessage = "Easy to use, One click connect to QuickVPN.";
+    public static String shareSubject = "QuickVPN";
+    public static String shareMessage = "QuickVPN\nDownload Free Now\nhttps://play.google.com/store/apps/details?id=com.free.vpn.unblock.proxy.usavpn";
+    public static String NotifTitle = "QuickVPN";
     public static int Alarm_Id = 1234;
     public static int Notif_Id = 1214;
 
