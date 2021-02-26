@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">VPN</string>
-    <string name="vpn_process_name" translatable="false">:my.custom.vpn.process.name</string>
-    <string name="vpn_provider_authorities" translatable="false">com.anchorfree.hydrasdk.app.demo</string>
     <string name="version">Version 1.0</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="terms_of_service">Terms of Service</string>
@@ -21,13 +19,28 @@
     <string name="nav_header_title">Premium VPN</string>
     <string name="action_settings">Settings</string>
     <bool name="ads_switch">true</bool>
-    <string name="admob_appid">ca-app-pub-3940256099942544~3347511713</string>
+
+
+    <!--test ad id-->
+    <!--<string name="admob_appid">ca-app-pub-3940256099942544~3347511713</string>
     <string name="admob_banner">ca-app-pub-3940256099942544/6300978111</string>
     <string name="admob_native">ca-app-pub-3940256099942544/2247696110</string>
     <string name="admob_intersitail">ca-app-pub-3940256099942544/1033173712</string>
     <string name="banner_ads_id">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="facebook_placement_id">125586658_568258654</string>
-    <string name="privacy_policy_link">https://support.indratech.in/pages/1/privacy-policy-toto-vpn</string>
+    <string name="facebook_placement_id">125586658_568258654</string>-->
+    <!--test ads ids-->
+
+
+    <!--real ads ids-->
+    <string name="admob_appid">ca-app-pub-4486006838073203~2010889350</string>
+    <string name="admob_banner">ca-app-pub-4486006838073203/5651036875</string>
+    <string name="admob_native">ca-app-pub-4486006838073203/1081236477</string>
+    <string name="admob_intersitail">ca-app-pub-4486006838073203/8684394324</string>
+    <string name="banner_ads_id">ca-app-pub-4486006838073203/5651036875</string>
+    <!--real ads ids-->
+
+
+
     <bool name="admob_list_ads">true</bool>
     <string name="kBps">kB/s</string>
     <string name="MBps">MB/s</string>
@@ -40,11 +53,6 @@
     <string name="vip_price_3month"> $4.39</string>
     <string name="vip_price_6month"> $6.59</string>
     <string name="vip_price_12month"> $9.49</string>
-    <string name="speed_booster">Speed Booster</string>
-    <string name="interstitial_ad_unit" translatable="false">ca-app-pub-6098768079659830/2690364172</string>
-    <string name="banner_ad_unit" translatable="false"> ca-app-pub-6098768079659830/4021603626</string>
-    <string name="battery_saver">Battery Saver</string>
-    <string name="extended_battery_life"> \n to 2h 10m </string>
     <string name="optimize">optimize</string>
     <string name="connected_server"> Connected </string>
     <string name="select_country">Select Country</string>
@@ -64,7 +72,7 @@
     <string name="go_premium">Go Premium</string>
     <string name="selected">Selected</string>
     <string name="status">Status : </string>
-    <string name="xtreme_vpn">QuickVPN</string>
+    <string name="xtreme_vpn">FastVPN</string>
     <string name="monthly">Monthly</string>
     <string name="buy_now">Buy Now</string>
     <string name="_6_month">6 Month</string>
@@ -72,11 +80,11 @@
     <string name="unlock">Unlock</string>
 
     <string name="privacypolicy" translatable="false"><![CDATA[<p><strong>Privacy Policy</strong></p>
-<p>This document ("Privacy Policy") explains the privacy rules applicable to all information collected or submitted when you access, install, or use the QuickVPN Services.</p>
+<p>This document ("Privacy Policy") explains the privacy rules applicable to all information collected or submitted when you access, install, or use the FastVPN Services.</p>
 <p>By visiting our privacy, you confirm that you have read this Privacy Policy and agree to be bound by this Privacy Policy. If you disagree with the rules of this Privacy Policy, please do not use our Services.</p>
 <p>Information in this Privacy Policy is provided in layers, meaning that all information related to general personal data processing practices is provided here.</p>
 <p><strong>How we Process your Data</strong></p>
-<p>QuickVPN app processes user data to a limited scope &ndash; for provision of the Services, processing payments for the Services, as well as the functioning of our websites and mobile applications. We process the following basic information:</p>
+<p>FastVPN app processes user data to a limited scope &ndash; for provision of the Services, processing payments for the Services, as well as the functioning of our websites and mobile applications. We process the following basic information:</p>
 <p><strong>Information collected on our app</strong></p>
 <p>As most apps on the internet, VPN app collects access logs (such as IP address, browser type, operating system) to operate our services and ensure their secure, reliable, and robust performance. This in Log</p>
 <p><strong>Data</strong></p>
@@ -104,8 +112,8 @@
 <p>Your personal information may be processed in any country in which we engage service providers. When you use our Services, you acknowledge the transfer of your personal information outside of the country where you reside.</p>
 <p><strong>Choices related to your data</strong></p>
 <p>If you&rsquo;d like to edit your profile information, delete your account or data, please contact our support team. Please note that you may need to pass through a couple of account verification steps so that we can verify you are the owner of the account.</p>
-<p>If you disagree with the processing of your data by QuickVPN, please do not use our Services. You can request us to discontinue processing your personal data, in which case your data will be processed only as much as it is necessary to effect the discontinuation of your use of the Services (e.g., final settlement, or deleting all personal data based on your email address), or finalizing other QuickVPN legal relationship with you (e.g., record keeping, accounting, processing refunds).</p>
-<p>If you wish to use the QuickVPN again, you will have to accept and agree to this Privacy Policy.</p>
+<p>If you disagree with the processing of your data by FastVPN, please do not use our Services. You can request us to discontinue processing your personal data, in which case your data will be processed only as much as it is necessary to effect the discontinuation of your use of the Services (e.g., final settlement, or deleting all personal data based on your email address), or finalizing other FastVPN legal relationship with you (e.g., record keeping, accounting, processing refunds).</p>
+<p>If you wish to use the FastVPN again, you will have to accept and agree to this Privacy Policy.</p>
 <p>Data security</p>
 <p>We take data security very seriously and take all steps reasonably necessary to secure your data (whether technical, physical, or administrative).</p>]]></string>
     <string name="free_server">Free Server</string>

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class MySharePrefs {
-    public static String PREFERENCE = "quickvpn";
+    public static String PREFERENCE = "fastvpn";
     private static MySharePrefs instance;
     SharedPreferences.Editor editor;
     int PRIVATE_MODE = 0;

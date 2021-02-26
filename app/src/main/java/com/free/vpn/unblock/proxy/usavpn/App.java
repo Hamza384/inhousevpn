@@ -48,7 +48,6 @@ public class App extends MultiDexApplication {
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         appInstance = this;
-        LoadAds();
         Log.d("lololo", "onCreate: ");
         MobileAds.initialize(getApplicationContext(), getString(R.string.admob_intersitail));
         Log.d("lololo", "Mobile Ads: ");
@@ -113,51 +112,6 @@ public class App extends MultiDexApplication {
         return getSharedPreferences(BuildConfig.SHARED_PREFS, Context.MODE_PRIVATE);
     }
 
-    public void LoadAds() {
-
-        try {
-
-
-
-            mInterstitialAd = new PublisherInterstitialAd(this);
-
-            mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial_ad_unit));
-
-            ins_adRequest = new PublisherAdRequest.Builder()
-                    .build();
-
-            mInterstitialAd.loadAd(ins_adRequest);
-            Log.d("lololo", "Ad Loaded");
-        } catch (Exception e) {
-            e.getMessage();
-            Log.d("lololo", "LoadAds: "+e.getMessage());
-        }
-    }
-
-    public boolean requestNewInterstitial() {
-
-        try {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-                return true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean isLoaded() {
-
-        try {
-            if (mInterstitialAd.isLoaded() && mInterstitialAd != null) {
-                return true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
 
 

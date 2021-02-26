@@ -29,7 +29,7 @@ public class WelcomeActivity extends MaterialIntroActivity {
                     .buttonsColor(R.color.blue)
                     .image(R.drawable.ic_secure)
                     .title("Safe and Secure")
-                    .description("QuickVPN is Very Fast & Secure.Easy to Use")
+                    .description("FastVPN is Very Fast & Secure.Easy to Use")
                     .build());
             addSlide(new SlideFragmentBuilder()
                     .backgroundColor(R.color.colorPrimaryDark)
@@ -44,7 +44,7 @@ public class WelcomeActivity extends MaterialIntroActivity {
                     .buttonsColor(R.color.blue)
                     .image(R.drawable.iv_privacy_secure)
                     .title("Private Surfing")
-                    .description("With QuickVPN you can Anonymously Surf")
+                    .description("With FastVPN you can Anonymously Surf")
                     .build());
 
         }

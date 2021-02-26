@@ -67,7 +67,7 @@ public class VIPServerFragment extends Fragment implements ServerListAdapterVip.
         }
 
         adapter = new ServerListAdapterVip(countryArrayList, getActivity());
-        if (getResources().getBoolean(R.bool.ads_switch) && getResources().getBoolean(R.bool.facebook_list_ads) && (!Config.ads_subscription || !Config.all_subscription)) {
+        /*if (getResources().getBoolean(R.bool.ads_switch) && getResources().getBoolean(R.bool.facebook_list_ads) && (!Config.ads_subscription || !Config.all_subscription)) {
             //facebook adapter
             FbNativeAdapter nativeAdapter = FbNativeAdapter.Builder.with(getString(R.string.facebook_placement_id), adapter)
                     .adItemInterval(4)
@@ -88,7 +88,7 @@ public class VIPServerFragment extends Fragment implements ServerListAdapterVip.
         } else {
             //simple adapter
             recyclerView.setAdapter(adapter);
-        }
+        }*/
         recyclerView.setAdapter(adapter);
         return view;
     }
