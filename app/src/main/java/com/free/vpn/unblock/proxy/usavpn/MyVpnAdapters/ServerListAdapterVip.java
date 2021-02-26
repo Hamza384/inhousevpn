@@ -15,6 +15,7 @@ import com.anchorfree.partner.api.data.Country;
 import com.anchorfree.partner.api.response.RemainingTraffic;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnActivities.MainActivity;
 import com.free.vpn.unblock.proxy.usavpn.R;
+import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -25,6 +26,8 @@ public class ServerListAdapterVip extends RecyclerView.Adapter<ServerListAdapter
     ArrayList<Country> countryArrayList;
     private final Context mContext;
     RemainingTraffic remainingTraffic;
+    private InterstitialAd mInterstitialAd;
+
     public ServerListAdapterVip(ArrayList<Country> countryArrayList, Context ctx) {
         this.countryArrayList = countryArrayList;
         this.mContext =ctx;
@@ -36,6 +39,8 @@ public class ServerListAdapterVip extends RecyclerView.Adapter<ServerListAdapter
     {
         View item= LayoutInflater.from(parent.getContext()).inflate(R.layout.vip_server_list_item,parent,false);
         mViewhoder mvh=new mViewhoder(item);
+
+
         return mvh;
     }
 

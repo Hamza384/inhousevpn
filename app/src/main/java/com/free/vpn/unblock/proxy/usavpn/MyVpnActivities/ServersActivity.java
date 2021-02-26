@@ -8,9 +8,12 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.multidex.MultiDex;
 import androidx.viewpager.widget.ViewPager;
 
 import com.free.vpn.unblock.proxy.usavpn.R;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.tabs.TabLayout;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnAdapters.TabsAdapter;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnFragments.FreeServerFragment;
@@ -28,12 +31,15 @@ public class ServersActivity extends AppCompatActivity {
     Toolbar mToolbar;
     FirebaseAnalytics mFirebaseAnalytics;
     Context mContext;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servers);
         mContext = ServersActivity.this;
+
+        MultiDex.install(mContext);
+        MobileAds.initialize(mContext, "ca-app-pub-3940256099942544~3347511713");
+
 
         viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabLayout);

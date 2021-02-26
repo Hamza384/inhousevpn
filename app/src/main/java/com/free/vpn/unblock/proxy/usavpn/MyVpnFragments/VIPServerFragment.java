@@ -89,14 +89,13 @@ public class VIPServerFragment extends Fragment implements ServerListAdapterVip.
             //simple adapter
             recyclerView.setAdapter(adapter);
         }
-        /*loadServers();*/
+        recyclerView.setAdapter(adapter);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        /*loadServers();*/
         loadServers();
     }
 

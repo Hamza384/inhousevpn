@@ -26,6 +26,10 @@ public class Constants {
     public static String NotifTitle = "QuickVPN";
     public static int Alarm_Id = 1234;
     public static int Notif_Id = 1214;
+    public static String KEY_AD_COUNT = "count";
+    public static boolean isFirstTime = true;
+
+
 
     public static boolean isOnline(Context context) {
         try {

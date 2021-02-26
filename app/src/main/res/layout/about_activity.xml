@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="1.0"
+            android:text="1.1"
             android:textColor="#000000"
             android:textSize="23sp" />
 
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="29 Jan, 2021"
+            android:text="26 Feb, 2021"
             android:textColor="#000000"
             android:textSize="23sp" />
 

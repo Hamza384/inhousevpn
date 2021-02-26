@@ -42,14 +42,18 @@ import com.anchorfree.vpnsdk.exceptions.VpnException;
 import com.anchorfree.vpnsdk.vpnservice.VPNState;
 import com.free.vpn.unblock.proxy.usavpn.Config;
 import com.free.vpn.unblock.proxy.usavpn.MyVpnUtils.LocalFormat;
+import com.free.vpn.unblock.proxy.usavpn.MyVpnUtils.MySharePrefs;
 import com.free.vpn.unblock.proxy.usavpn.R;
 import com.free.vpn.unblock.proxy.usavpn.speed.Speed;
 import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.VideoController;
+import com.google.android.gms.ads.VideoOptions;
 import com.google.android.gms.ads.formats.MediaView;
+import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
 import com.google.android.material.navigation.NavigationView;
@@ -125,6 +129,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
     ReviewInfo reviewInfo;
     androidx.appcompat.app.AlertDialog alertDialog;
     FirebaseAnalytics mFirebaseAnalytics;
+    Button btnCrash;
     private long startTime = 0L;
     private final Runnable updateTimerThread = new Runnable() {
 
@@ -162,7 +167,6 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
     private long mLastTxBytes = 0;
     private long mLastTime = 0;
     private Speed mSpeed;
-    Button btnCrash;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -389,65 +393,152 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
             @Override
             public void success(@NonNull Boolean aBoolean) {
                 if (aBoolean) {
-                    STATUS = "Disconnect";
-                    /*if (mInterstitialAd != null) mInterstitialAd.setAdListener(new AdListener() {
-                        @Override
-                        public void onAdLoaded() {
-                            // Code to be executed when an ad finishes loading.
+
+
+
+                    if(Constants.isFirstTime){
+                        Constants.isFirstTime = false;
+                        STATUS = "Disconnect";
+                        Log.d("lololo", "isFirstTime");
+                        if (mInterstitialAd != null) mInterstitialAd.setAdListener(new AdListener() {
+                            @Override
+                            public void onAdLoaded() {
+                                // Code to be executed when an ad finishes loading.
+                                if (mInterstitialAd.isLoaded()) {
+                                    mInterstitialAd.show();
+                                } else {
+                                    AdRequest request = new AdRequest.Builder()
+                                            .addTestDevice("91b511f6-d4ab-4a6b-94fa-e538dfbee85f")
+                                            .build();
+                                    mInterstitialAd.loadAd(request);
+                                }
+                            }
+
+                            @Override
+                            public void onAdFailedToLoad(int errorCode) {
+                                // Code to be executed when an ad request fails.
+                                disconnectAlert();
+
+                            }
+
+                            @Override
+                            public void onAdOpened() {
+                                // Code to be executed when the ad is displayed.
+                            }
+
+                            @Override
+                            public void onAdClicked() {
+                                // Code to be executed when the user clicks on an ad.
+                            }
+
+                            @Override
+                            public void onAdLeftApplication() {
+                                // Code to be executed when the user has left the app.
+                            }
+
+                            @Override
+                            public void onAdClosed() {
+                                // Code to be executed when the interstitial ad is closed.
+                                disconnectAlert();
+                            }
+                        });
+                        /*disconnectAlert();*/
+                        if (getResources().getBoolean(R.bool.ads_switch) && (!Config.ads_subscription && !Config.all_subscription && !Config.vip_subscription)) {
+
                             if (mInterstitialAd.isLoaded()) {
                                 mInterstitialAd.show();
+                                /*disconnectAlert();*/
                             } else {
                                 AdRequest request = new AdRequest.Builder()
                                         .addTestDevice("91b511f6-d4ab-4a6b-94fa-e538dfbee85f")
                                         .build();
                                 mInterstitialAd.loadAd(request);
+                                /*disconnectAlert();*/
                             }
-                        }
 
-                        @Override
-                        public void onAdFailedToLoad(int errorCode) {
-                            // Code to be executed when an ad request fails.
-                            disconnectAlert();
-                        }
-
-                        @Override
-                        public void onAdOpened() {
-                            // Code to be executed when the ad is displayed.
-                        }
-
-                        @Override
-                        public void onAdClicked() {
-                            // Code to be executed when the user clicks on an ad.
-                        }
-
-                        @Override
-                        public void onAdLeftApplication() {
-                            // Code to be executed when the user has left the app.
-                        }
-
-                        @Override
-                        public void onAdClosed() {
-                            // Code to be executed when the interstitial ad is closed.
-                            disconnectAlert();
-                        }
-                    });*/
-                    disconnectAlert();
-                    if (getResources().getBoolean(R.bool.ads_switch) && (!Config.ads_subscription && !Config.all_subscription && !Config.vip_subscription)) {
-
-                        if (mInterstitialAd.isLoaded()) {
-                            /*mInterstitialAd.show();*/
-                            disconnectAlert();
                         } else {
-                            /*AdRequest request = new AdRequest.Builder()
-                                    .addTestDevice("91b511f6-d4ab-4a6b-94fa-e538dfbee85f")
-                                    .build();
-                            mInterstitialAd.loadAd(request);*/
                             disconnectAlert();
                         }
+                    }else{
 
-                    } else {
-                        disconnectAlert();
+                        if (showAdOnCount(MySharePrefs.getInstance(mContext).getIntPref(Constants.KEY_AD_COUNT, 0))) {
+                            Log.d(TAG, "success: "+showAdOnCount(MySharePrefs.getInstance(mContext).getIntPref(Constants.KEY_AD_COUNT, 0)));
+                            Log.d("lololo", "isFirsttime false");
+                            STATUS = "Disconnect";
+                            if (mInterstitialAd != null)
+                                mInterstitialAd.setAdListener(new AdListener() {
+                                    @Override
+                                    public void onAdLoaded() {
+                                        // Code to be executed when an ad finishes loading.
+                                        if (mInterstitialAd.isLoaded()) {
+                                            mInterstitialAd.show();
+                                        } else {
+                                            AdRequest request = new AdRequest.Builder()
+                                                    .addTestDevice("91b511f6-d4ab-4a6b-94fa-e538dfbee85f")
+                                                    .build();
+                                            mInterstitialAd.loadAd(request);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onAdFailedToLoad(int errorCode) {
+                                        // Code to be executed when an ad request fails.
+                                        disconnectAlert();
+
+                                    }
+
+                                    @Override
+                                    public void onAdOpened() {
+                                        // Code to be executed when the ad is displayed.
+                                    }
+
+                                    @Override
+                                    public void onAdClicked() {
+                                        // Code to be executed when the user clicks on an ad.
+                                    }
+
+                                    @Override
+                                    public void onAdLeftApplication() {
+                                        // Code to be executed when the user has left the app.
+                                    }
+
+                                    @Override
+                                    public void onAdClosed() {
+                                        // Code to be executed when the interstitial ad is closed.
+                                        disconnectAlert();
+                                    }
+                                });
+                            /*disconnectAlert();*/
+                            if (getResources().getBoolean(R.bool.ads_switch) && (!Config.ads_subscription && !Config.all_subscription && !Config.vip_subscription)) {
+
+                                if (mInterstitialAd.isLoaded()) {
+                                    mInterstitialAd.show();
+                                    /*disconnectAlert();*/
+                                } else {
+                                    AdRequest request = new AdRequest.Builder()
+                                            .addTestDevice("91b511f6-d4ab-4a6b-94fa-e538dfbee85f")
+                                            .build();
+                                    mInterstitialAd.loadAd(request);
+                                    /*disconnectAlert();*/
+                                }
+
+                            } else {
+                                disconnectAlert();
+                            }
+                        }else{
+                            Log.d("lololo", "else");
+                            disconnectAlert();
+                        }
                     }
+
+
+
+
+
+
+
+
+
                 } else {
 
                     STATUS = "Connect";
@@ -733,6 +824,8 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
                     public void onClick(DialogInterface dialog, int which) {
                         disconnectFromVnp();
                         vpnToastCheck = true;
+                        dialog.dismiss();
+
                         Toasty.success(MainContentActivity.this, "Server Disconnected", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -747,7 +840,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
 
     //loading native ad
 
-    /*private void populateUnifiedNativeAdView(UnifiedNativeAd nativeAd, UnifiedNativeAdView adView) {
+    private void populateUnifiedNativeAdView(UnifiedNativeAd nativeAd, UnifiedNativeAdView adView) {
         MediaView mediaView = adView.findViewById(R.id.ad_media);
         adView.setMediaView(mediaView);
         adView.setHeadlineView(adView.findViewById(R.id.ad_headline));
@@ -804,7 +897,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
             });
         } else {
         }
-    }*/
+    }
 
 
     /**
@@ -813,10 +906,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
      */
 
 
-
-
-
-    /*private void refreshAd() {
+    private void refreshAd() {
 
         AdLoader.Builder builder = new AdLoader.Builder(this, getString(R.string.admob_native));
 
@@ -858,7 +948,9 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
         adLoader.loadAd(new AdRequest.Builder()
                 .addTestDevice("91b511f6-d4ab-4a6b-94fa-e538dfbee85f")
                 .build());
-    }*/
+    }
+
+
     @OnClick(R.id.purchase_layout)
     void goPurchase() {
         startActivity(new Intent(this, UnlockAllActivity.class));
@@ -922,7 +1014,7 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
         if (getResources().getBoolean(R.bool.ads_switch) && (!Config.ads_subscription && !Config.all_subscription && !Config.vip_subscription)) {
             //native
             Log.d(TAG, "onStart----: ");
-            /*refreshAd();*/
+            refreshAd();
             //interstitital
             mInterstitialAd.setAdListener(new AdListener() {
 
@@ -1032,6 +1124,20 @@ public abstract class MainContentActivity extends AppCompatActivity implements N
         shareIntent.putExtra(Intent.EXTRA_TEXT, message);
         startActivity(Intent.createChooser(shareIntent, "Share via"));
     }
+
+        private boolean showAdOnCount(int count) {
+        Log.d("lololo", "showAdOnCount: "+count);
+        if (count >= 1) {
+            MySharePrefs.getInstance(mContext).savePref(Constants.KEY_AD_COUNT, 0);
+            return true;
+        } else {
+            MySharePrefs.getInstance(mContext).savePref(Constants.KEY_AD_COUNT, count+1);
+            return false;
+        }
+
+    }
+
+
 
 
 }
